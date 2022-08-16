@@ -8,6 +8,8 @@ const SearchBarContainer = styled.div`
 const SearchBarForm = styled.form`
     width: 100%;
     display: flex;
+    align-items: center;
+    justify-content: flex-end;
     background-color: #F6F7F9;
     height: 30px;
     border: 1px solid #EDEFF1;
@@ -28,7 +30,7 @@ export default function SearchBar() {
   return (
     <SearchBarContainer>
         <SearchBarForm>
-            <SearchInput type="text"n placeholder='Search Reddit'/>
+            <SearchInput type="text" placeholder='Search Reddit'/>
         </SearchBarForm>
     </SearchBarContainer>
   )
