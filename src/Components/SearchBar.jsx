@@ -21,7 +21,7 @@ const SearchInput = styled.input`
     background: transparent;
     padding: 2px 0;
     &:focus{
-        border: none;
+        outline: none;
         // border: 1px solid #0487D9;
     }
 `
