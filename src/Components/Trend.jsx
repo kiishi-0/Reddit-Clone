@@ -14,6 +14,7 @@ const TrendBox = styled.a`
       width: 350px;
     }
 `
+
 export default function Trend() {
   return (
     <TrendBox href='#'>

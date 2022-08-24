@@ -21,6 +21,7 @@ const Buttons = styled.div`
   height: 35px;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   font-size: 16px;
   font-weight: 600;
   border-radius: 100px;
@@ -52,13 +53,37 @@ const DropDown = styled(Buttons)`
 `
 const OtherLinks = styled(Buttons)`
   color: #878A8C;
+  position: relative; 
   span{
     font-size: 16px;
     font-weight: 600;
   }
   
 `
+const SelectOptionDiv = styled.div`
+  position: absolute; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  top: 100%;
+  display:none;
+  box-shadow: 0 2px 4px 0 rgba(28,28,28,0.2);
+  border: 1px solid #EDEFF1;
+  border-radius: 5px;
+`
+const SelectOption = styled.div`
+  padding: 15px 10px;
+  background: #FFFFFF;
+`
+
 export default function PostSectionHeader() {
+  const displayOptions = () =>{
+    const more = document.getElementById("more_button")
+    const moreDisplay = more.style.display
+    moreDisplay === "flex" ? more.style.display = 'none' : more.style.display = 'flex';
+    
+  }
   return (
     <PostHeaderConatiner>
         <Buttons title='Hot' role='button'>
@@ -80,10 +105,13 @@ export default function PostSectionHeader() {
           </ButtonImageContainer>
           <span>Top</span>
         </OtherLinks>
-        <OtherLinks>
+        <OtherLinks onClick={displayOptions}>
           <ButtonImageContainer className="more">
             <ButtonImage src={more}></ButtonImage>
           </ButtonImageContainer>
+          <SelectOptionDiv id='more_button'>
+            <SelectOption>Rising</SelectOption>
+          </SelectOptionDiv>
         </OtherLinks>
     </PostHeaderConatiner>
   )

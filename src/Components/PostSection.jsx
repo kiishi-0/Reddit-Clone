@@ -9,9 +9,6 @@ const PostSectionContainer = styled.section`
     align-items: flex-start;
     // padding: 0 10%;
 `
-// const PostHeaderSection = styled.div`
-
-// `
 const Title = styled.h3`
     font-weight: 600;
     font-size: 16px;
