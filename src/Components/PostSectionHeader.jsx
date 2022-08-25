@@ -10,10 +10,12 @@ const PostHeaderConatiner = styled.div`
   background: #FFFFFF;
   height: 49px;
   margin-top: 10px;
+  border: 1px solid #ccc;
   padding: 0 20px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  margin-bottom: 20px;
 `
 const Buttons = styled.div`
   display: flex;
@@ -27,7 +29,11 @@ const Buttons = styled.div`
   border-radius: 100px;
   padding: 0 10px;
   margin-right: 10px;
+  position: relative;
   background: #F3F7F9;
+  .more{
+    margin-right: 0;
+  }
   :hover{
     background: #6c6e7028;
   }
@@ -53,6 +59,7 @@ const DropDown = styled(Buttons)`
 `
 const OtherLinks = styled(Buttons)`
   color: #878A8C;
+  background: none;
   position: relative; 
   span{
     font-size: 16px;
@@ -78,10 +85,21 @@ const SelectOption = styled.div`
 `
 
 export default function PostSectionHeader() {
-  const displayOptions = () =>{
-    const more = document.getElementById("more_button")
-    const moreDisplay = more.style.display
-    moreDisplay === "flex" ? more.style.display = 'none' : more.style.display = 'flex';
+  const displayOptions = (e) =>{
+    // document.innerHTML
+    // console.log(e)
+    // if(e.getAttribute('class').includes("prob")){
+    //   console.log('problem')
+    //   const parent = e.parentNode;
+    //   console.log(parent)
+    // }
+    // console.log(e.children)
+    // console.log(e.children[1].getAttribute('id'))
+
+    // const elID = e.children[1].getAttribute('id')
+    // const more = document.getElementById(elID)
+    // const moreDisplay = more.style.display
+    // moreDisplay === "flex" ? more.style.display = 'none' : more.style.display = 'flex';
     
   }
   return (
@@ -92,7 +110,17 @@ export default function PostSectionHeader() {
           </ButtonImageContainer>
           <ButtonText>Hot</ButtonText>
         </Buttons>
-        <DropDown>Everywhere</DropDown>
+        {/* <DropDown>Everywhere</DropDown> */}
+        <Buttons className="evw" onClick={(e) => displayOptions(e.target)}>
+          {/* <ButtonImageContainer >
+            <ButtonImage src={more}></ButtonImage>
+          </ButtonImageContainer> */}
+          <ButtonText className="prob">Everywhere</ButtonText>
+          <SelectOptionDiv id='evw_button'>
+            <SelectOption>Nigeria</SelectOption>
+            <SelectOption>America</SelectOption>
+          </SelectOptionDiv>
+        </Buttons>
         <OtherLinks>
           <ButtonImageContainer>
             <ButtonImage src={newIcon}></ButtonImage>
@@ -105,9 +133,9 @@ export default function PostSectionHeader() {
           </ButtonImageContainer>
           <span>Top</span>
         </OtherLinks>
-        <OtherLinks onClick={displayOptions}>
-          <ButtonImageContainer className="more">
-            <ButtonImage src={more}></ButtonImage>
+        <OtherLinks className="more" onClick={(e) => displayOptions(e.target)}>
+          <ButtonImageContainer >
+            <ButtonImage className="prob" src={more}></ButtonImage>
           </ButtonImageContainer>
           <SelectOptionDiv id='more_button'>
             <SelectOption>Rising</SelectOption>

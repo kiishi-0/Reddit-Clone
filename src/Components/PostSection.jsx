@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PostSectionHeader from './PostSectionHeader'
-
+import Post from './Post'
 const PostSectionContainer = styled.section`
     display: flex;
     flex-direction: column;
@@ -21,6 +21,7 @@ export default function PostSection() {
         <Title>Popular Posts</Title>
         <PostSectionHeader>
         </PostSectionHeader>
+        <Post></Post>
     </PostSectionContainer>
   )
 }
