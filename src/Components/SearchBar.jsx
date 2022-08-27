@@ -31,7 +31,7 @@ const SearchInput = styled.input`
 const SearchImageLabel = styled.label`
     width: 10%;
     margin-right: center;
-    span{
+    span.searchImage{
         width: 100%;
         display: flex;
         align-items: center;
@@ -49,7 +49,7 @@ export default function SearchBar() {
     <SearchBarContainer>
         <SearchBarForm>
             <SearchImageLabel for="search">
-                <span>
+                <span className='searchImage'>
                     <SearchImage src={search} />
                 </span>
             </SearchImageLabel>
