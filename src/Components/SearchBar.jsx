@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+// import search from `../images/search.svg`
+import search from '../images/search.svg'
 
 const SearchBarContainer = styled.div`
     width: 60%;
@@ -11,11 +13,12 @@ const SearchBarForm = styled.form`
     align-items: center;
     justify-content: flex-end;
     background-color: #F6F7F9;
+    padding: 0 10px;
     height: 30px;
     border: 1px solid #EDEFF1;
 `
 const SearchInput = styled.input`
-    width: 80%;
+    width: 90%;
     height: 100%;
     border: 0;
     background: transparent;
@@ -25,12 +28,32 @@ const SearchInput = styled.input`
         // border: 1px solid #0487D9;
     }
 `
+const SearchImageLabel = styled.label`
+    width: 10%;
+    margin-right: center;
+    span{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+`
+const SearchImage = styled.img`
+    width: 20px;
+    object-fit: contain;
+`
 
 export default function SearchBar() {
   return (
     <SearchBarContainer>
         <SearchBarForm>
-            <SearchInput type="text" placeholder='Search Reddit'/>
+            <SearchImageLabel for="search">
+                <span>
+                    <SearchImage src={search} />
+                </span>
+            </SearchImageLabel>
+            <SearchInput id="search" type="text" placeholder='Search Reddit'/>
         </SearchBarForm>
     </SearchBarContainer>
   )
