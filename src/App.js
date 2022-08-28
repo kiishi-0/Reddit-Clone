@@ -3,6 +3,7 @@ import Nav from './Components/Nav';
 import TrendSection from './Components/TrendSection';
 import PostSection from './Components/PostSection';
 import styled from 'styled-components';
+ import React from 'react';
 
 const AppContainer = styled.div`
   padding: 0 10%;
