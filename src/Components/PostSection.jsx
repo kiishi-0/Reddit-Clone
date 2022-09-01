@@ -4,6 +4,8 @@ import PostSectionHeader from './PostSectionHeader'
 import Post from './Post'
 import { useSelector, useDispatch } from 'react-redux/es/exports'
 import { loadPosts } from '../features/posts'
+import LoaderPost from './LoaderPost'
+// import { motion } from 'framer-motion'
 
 
 const PostSectionContainer = styled.section`
@@ -27,7 +29,9 @@ export default function PostSection() {
         <Title>Popular Posts</Title>
         <PostSectionHeader>
         </PostSectionHeader>
-        <Post></Post>
+        {posts.length === 0 ? <LoaderPost width="100%" height="250px"></LoaderPost> : posts.map(post => <Post></Post>)}
     </PostSectionContainer>
   )
 }
+
+
