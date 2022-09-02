@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import PostSectionHeader from './PostSectionHeader'
 import Post from './Post'
@@ -34,6 +34,20 @@ const Title = styled.h3`
 export default function PostSection() {
   const dispatch = useDispatch()
   const posts = useSelector(state => state.posts.value)
+  const FetchPosts = async (url) =>{
+
+    const endpoint =  new URL(url)
+    const response = await fetch(endpoint);
+    if(response.status === 404){
+      console.log("Error")
+      return;
+    }
+    const data = await response.json();
+    console.log(data)
+  }
+  useEffect(()=>{
+    FetchPosts('https://www.reddit.com/r/posts.json')
+  })
   return (
     <EntireSection>
       <PostSectionContainer>

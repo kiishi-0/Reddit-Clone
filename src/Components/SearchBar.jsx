@@ -48,7 +48,7 @@ export default function SearchBar() {
   return (
     <SearchBarContainer>
         <SearchBarForm>
-            <SearchImageLabel for="search">
+            <SearchImageLabel htmlFor="search">
                 <span className='searchImage'>
                     <SearchImage src={search} />
                 </span>
