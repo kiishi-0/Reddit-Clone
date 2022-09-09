@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import PostSectionHeader from './PostSectionHeader'
 import Post from './Post'
-import { useSelector, useDispatch } from 'react-redux/es/exports'
-import { loadPosts } from '../features/posts'
+// import { useSelector, useDispatch } from 'react-redux/es/exports'
+// import { loadPosts } from '../features/posts'
 import LoaderPost from './LoaderPost'
 import SideSection from './SideSection'
-// import { motion } from 'framer-motion'
+
 
 const EntireSection = styled.section`
   display: flex;
@@ -32,10 +32,10 @@ const Title = styled.h3`
 `
 
 export default function PostSection() {
-  const dispatch = useDispatch()
-  const posts = useSelector(state => state.posts.value)
+  const [arrayPosts, setArrayPost] = useState([]);
+  // const dispatch = useDispatch()
+  // const posts = useSelector(state => state.posts.value)
   const FetchPosts = async (url) =>{
-
     const endpoint =  new URL(url)
     const response = await fetch(endpoint);
     if(response.status === 404){
@@ -43,18 +43,40 @@ export default function PostSection() {
       return;
     }
     const data = await response.json();
-    console.log(data)
+
+    return data;
+    
   }
-  useEffect(()=>{
-    FetchPosts('https://www.reddit.com/r/posts.json')
-  })
+  const StorePost = async ()=>{
+    const fetched = await FetchPosts('https://www.reddit.com/r/posts.json')
+    const postArray = await fetched.data.children;
+    setArrayPost(postArray);
+    // useDispatch(loadPosts(postArray))
+    // console.log(postArray)
+  }
+  useEffect( ()=>{
+    
+    StorePost()
+    // dispatch(loadPosts(arrayPosts))
+  
+  }, []);
+//  console.log(posts)
+  // if(arrayPosts.length > 0){
+  //   dispatch(loadPosts(arrayPosts))
+  //   console.log(posts)
+  //   // console.log(posts.indexOf(post[0]))
+  // }
+  // console.log(arrayPosts)
+  // arrayPosts.indexOf(post)
+  // console.log(arrayPosts.indexOf(arrayPosts[3]))
+  
   return (
     <EntireSection>
       <PostSectionContainer>
           <Title>Popular Posts</Title>
           <PostSectionHeader>
           </PostSectionHeader>
-          {posts.length === 0 ? <LoaderPost width="100%" height="250px"></LoaderPost> : posts.map(post => <Post></Post>)}
+          {arrayPosts.length > 0 ? arrayPosts.map((post, index) => <Post key={index} data={post.data}></Post>) :  <LoaderPost width="100%" height="250px"></LoaderPost>}
       </PostSectionContainer>
       <SideSection></SideSection>
     </EntireSection>

@@ -65,11 +65,11 @@ const CommunityName = styled.a`
     color: #000000;
     text-decoration: none;
 `
-const CommunityLink = styled.a`
-    color: #000000;
-    text-decoration: none;
-    width: 100%;
-`
+// const CommunityLink = styled.a`
+//     color: #000000;
+//     text-decoration: none;
+//     width: 100%;
+// `
 const GreenArrow = styled.div`
     width: 15px;
     margin-right: 10px;
@@ -117,7 +117,7 @@ export default function SideSection() {
                 <p>Top News Communities</p>
             </TopNewsHeader>
             <CommunitiesList>
-                <CommunityLink href="#">
+                {/* <CommunityLink href="#"> */}
                     <li>
                         <span>1</span>
                         <GreenArrow>
@@ -150,7 +150,7 @@ export default function SideSection() {
                         <CommunityImage></CommunityImage>
                         <CommunityName href="#">r/worldnews</CommunityName>
                     </li>
-                </CommunityLink>
+                {/* </CommunityLink> */}
                 
             </CommunitiesList>
             <ViewAllButton href="#">View All</ViewAllButton>

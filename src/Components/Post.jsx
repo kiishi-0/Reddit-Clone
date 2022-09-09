@@ -2,14 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 import arrow from '../images/arrow.svg'
 
-const PostContainer = styled.div`
-    width: 60%;
-    height: 350px;
+const PostContainer = styled.a`
+    width: 100%;
+    min-height: 350px;
+    margin-bottom: 30px;
     background: #FFFFFF;
     border: 1px solid #CCCCCC;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
+    text-decoration: none;
     @media(max-width: 768px){
         width: 100%;
     }
@@ -112,17 +114,54 @@ const JoinButton = styled.button`
 const PostText = styled.p`
     font-weight: 600;
     font-size: 18px;
+    width: 100%;
+    text-align: left;
+    padding: 10px;
     color: #000;
     text-align: left;
 `
-export default function Post() {
+const PostMedia = styled.span`
+  width: 100%;
+  text-align: left;
+  color: #000;
+  padding: 10px;
+` 
+export default function Post(props) {
+  console.log(props.data)
+  const data = props.data;
+  let ourString = data.selftext_html
+  let convertSymboltoHTMLString = function (str) {
+    var dom = document.createElement('p');
+    dom.classList.add("innerText")
+	dom.innerHTML = str;
+	return dom.innerText || dom.textContent; 
+
+ };
+  const stringToHTML = function (str) {
+    var dom = document.createElement('div');
+    dom.innerHTML = str;
+    return dom;
+
+  };
+ const str = convertSymboltoHTMLString(ourString);
+ const selfText = stringToHTML(str);
+ console.log(selfText)
+ console.log(str)
+//  console.log(childInner(str));
+const appendSelfText = (text) =>{
+  console.log(text)
+  const el = document.getElementById(data.id);
+  console.log(el)
+  el === null ? console.log("nothing"): el.appendChild(text);
+}
+ console.log();
   return (
-    <PostContainer>
+    <PostContainer href={data.url}>
         <VotingDiv>
           <Vote>
             <VoteImage src={arrow} className="up"/>
           </Vote>
-          <VoteNumber>1.2K</VoteNumber>
+          <VoteNumber>{data.score}</VoteNumber>
           <Vote>
             <VoteImage src={arrow} />
           </Vote>
@@ -135,19 +174,16 @@ export default function Post() {
               </ProfilePicDiv>
               <CommunityName>r/AskReddit</CommunityName>
               <span className='dot'>•</span>
-              <span className='pText'>Posted By<span className='poster'><a href="#">u/404person_not_found</a></span><span className='time'>13 hours</span> ago</span>  
+              <span className='pText'>Posted By<span className='poster'><span href="#">u/{data.author}</span></span><span className='time'>13 hours</span> ago</span>  
             </PostHeaderTextDiv>            
             <JoinButton>Join</JoinButton>
           </PostHeader>
           <PostText>
-            Are you a software engineer 
-            looking for higher-paying tech 
-            jobs? To connect worldwide and 
-            improve your skills? You can find 
-            all this on startup oi - the first 
-            complete global tech community. 👉 
-            Explore with us today!
+            {data.title}
           </PostText>
+          <PostMedia id={data.id}>
+            {appendSelfText(selfText)}
+          </PostMedia>
         </PostDataSection>
     </PostContainer>
   )

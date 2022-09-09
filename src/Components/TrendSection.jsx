@@ -25,6 +25,7 @@ const Title = styled.h3`
   font-size: 16px;
   color: #1A1A1B;
 `
+
 export default function TrendSection() {
   return (
     <TrendSectionContainer>
