@@ -4,7 +4,7 @@ import arrow from '../images/arrow.svg'
 
 const PostContainer = styled.a`
     width: 100%;
-    min-height: 150px;
+    min-height: 100px;
     margin-bottom: 30px;
     background: #FFFFFF;
     border: 1px solid #CCCCCC;
@@ -125,9 +125,12 @@ const PostMedia = styled.span`
   text-align: left;
   color: #000;
   padding: 10px;
+  .post_image{
+    object-fit: contain;
+    width: 100%;
+  }
 ` 
 export default function Post(props) {
-  // console.log(props.data)
   const data = props.data;
   let ourString = data.selftext_html
   let convertSymboltoHTMLString = function (str) {
@@ -153,12 +156,14 @@ const appendSelfText = (text) =>{
     if(child === null)
     el.appendChild(text)
   }
-  
-  // if(el !== null){
-  //   
-  // }
 }
-//  console.log();
+const checkMedia = () =>{
+  if(data.is_reddit_media_domain === true){
+    return <img className='post_image' src={data.url} alt={data.title} />
+  }else if(data.is_self === true){
+    appendSelfText(selfText)
+  }
+}
   return (
     <PostContainer href={data.url}>
         <VotingDiv>
@@ -185,8 +190,8 @@ const appendSelfText = (text) =>{
           <PostText>
             {data.title}
           </PostText>
-          <PostMedia id={data.id}>
-            {appendSelfText(selfText)}
+          <PostMedia id={data.id} className="media">
+            {checkMedia()}
           </PostMedia>
         </PostDataSection>
     </PostContainer>

@@ -33,10 +33,7 @@ const Title = styled.h3`
 
 export default function PostSection() {
   const [arrayPosts, setArrayPost] = useState([]);
-  // const dispatch = useDispatch()
-  // const posts = useSelector(state => state.posts.value)
   const FetchPosts = async (url) =>{
-    // const endpoint =  new URL(url)
     const data = await fetch(url).then(data => {
       return data.json()
     }).then( response => response).catch(error =>{
@@ -55,21 +52,9 @@ export default function PostSection() {
     }
   }
   useEffect( ()=>{
-    
-    StorePost()
-    // dispatch(loadPosts(arrayPosts))
-  
+    StorePost()  
   }, []);
-//  console.log(posts)
-  // if(arrayPosts.length > 0){
-  //   dispatch(loadPosts(arrayPosts))
-  //   console.log(posts)
-  //   // console.log(posts.indexOf(post[0]))
-  // }
-  console.log(arrayPosts)
-  // arrayPosts.indexOf(post)
-  // console.log(arrayPosts.indexOf(arrayPosts[3]))
-  
+
   return (
     <EntireSection>
       <PostSectionContainer>
