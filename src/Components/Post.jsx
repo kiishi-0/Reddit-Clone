@@ -4,7 +4,7 @@ import arrow from '../images/arrow.svg'
 
 const PostContainer = styled.a`
     width: 100%;
-    min-height: 350px;
+    min-height: 150px;
     margin-bottom: 30px;
     background: #FFFFFF;
     border: 1px solid #CCCCCC;
@@ -127,14 +127,14 @@ const PostMedia = styled.span`
   padding: 10px;
 ` 
 export default function Post(props) {
-  console.log(props.data)
+  // console.log(props.data)
   const data = props.data;
   let ourString = data.selftext_html
   let convertSymboltoHTMLString = function (str) {
     var dom = document.createElement('p');
     dom.classList.add("innerText")
-	dom.innerHTML = str;
-	return dom.innerText || dom.textContent; 
+    dom.innerHTML = str;
+    return dom.innerText || dom.textContent; 
 
  };
   const stringToHTML = function (str) {
@@ -145,16 +145,20 @@ export default function Post(props) {
   };
  const str = convertSymboltoHTMLString(ourString);
  const selfText = stringToHTML(str);
- console.log(selfText)
- console.log(str)
-//  console.log(childInner(str));
+
 const appendSelfText = (text) =>{
-  console.log(text)
   const el = document.getElementById(data.id);
-  console.log(el)
-  el === null ? console.log("nothing"): el.appendChild(text);
+  if(el){
+    let child = el.firstChild
+    if(child === null)
+    el.appendChild(text)
+  }
+  
+  // if(el !== null){
+  //   
+  // }
 }
- console.log();
+//  console.log();
   return (
     <PostContainer href={data.url}>
         <VotingDiv>

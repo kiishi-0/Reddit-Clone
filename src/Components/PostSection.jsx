@@ -36,23 +36,23 @@ export default function PostSection() {
   // const dispatch = useDispatch()
   // const posts = useSelector(state => state.posts.value)
   const FetchPosts = async (url) =>{
-    const endpoint =  new URL(url)
-    const response = await fetch(endpoint);
-    if(response.status === 404){
-      console.log("Error")
-      return;
-    }
-    const data = await response.json();
+    // const endpoint =  new URL(url)
+    const data = await fetch(url).then(data => {
+      return data.json()
+    }).then( response => response).catch(error =>{
+      console.log(error)
+    })
 
     return data;
     
   }
   const StorePost = async ()=>{
     const fetched = await FetchPosts('https://www.reddit.com/r/posts.json')
-    const postArray = await fetched.data.children;
+    const postArray = fetched.data.children;
     setArrayPost(postArray);
-    // useDispatch(loadPosts(postArray))
-    // console.log(postArray)
+    if(postArray){
+      return true
+    }
   }
   useEffect( ()=>{
     
@@ -66,7 +66,7 @@ export default function PostSection() {
   //   console.log(posts)
   //   // console.log(posts.indexOf(post[0]))
   // }
-  // console.log(arrayPosts)
+  console.log(arrayPosts)
   // arrayPosts.indexOf(post)
   // console.log(arrayPosts.indexOf(arrayPosts[3]))
   
