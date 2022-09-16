@@ -44,7 +44,7 @@ export default function PostSection() {
     
   }
   const StorePost = async ()=>{
-    const fetched = await FetchPosts('https://www.reddit.com/r/posts.json')
+    const fetched = await FetchPosts('https://www.reddit.com/r/AskReddit.json')
     const postArray = fetched.data.children;
     setArrayPost(postArray);
     if(postArray){
