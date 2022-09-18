@@ -1,6 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Trend from './Trend'
 import styled from 'styled-components';
+// import LoaderPost from './LoaderPost/';
+import { useEffect } from 'react';
+import TrendLoaders from './TrendLoaders';
 
 const TrendSectionContainer = styled.section`
   display: flex;
@@ -27,14 +30,34 @@ const Title = styled.h3`
 `
 
 export default function TrendSection() {
+  const [arrayTrends, setArrayTrend] = useState([]);
+  const FetchTrends = async (url) =>{
+    const data = await fetch(url).then(data => {
+      return data.json()
+    }).then( response => response).catch(error =>{
+      console.log(error)
+    })
+
+    return data;
+    
+  }
+  const StoreTrends = async ()=>{
+    const fetched = await FetchTrends('https://www.reddit.com/hot.json')
+    const postTrend = fetched.data.children.slice(5, 9);
+    setArrayTrend(postTrend)
+    if(arrayTrends){
+      return true
+    }
+    
+  }
+  useEffect( ()=>{
+    StoreTrends()  
+  }, []);
   return (
     <TrendSectionContainer>
       <Title>Trending Today</Title>
       <TrendsContainer>
-        <Trend className="first"></Trend>
-        <Trend className="second"></Trend>
-        <Trend className="third"></Trend>
-        <Trend className="fourth"></Trend>
+        {arrayTrends ? arrayTrends.map( (data, key) => <Trend data={data.data} key={key}/>) : <TrendLoaders />}
       </TrendsContainer>
     </TrendSectionContainer>
   )

@@ -46,6 +46,7 @@ export default function PostSection() {
   const StorePost = async ()=>{
     const fetched = await FetchPosts('https://www.reddit.com/r/AskReddit.json')
     const postArray = fetched.data.children;
+  
     setArrayPost(postArray);
     if(postArray){
       return true
@@ -54,7 +55,7 @@ export default function PostSection() {
   useEffect( ()=>{
     StorePost()  
   }, []);
-
+  
   return (
     <EntireSection>
       <PostSectionContainer>
@@ -69,3 +70,29 @@ export default function PostSection() {
 }
 
 
+// const map = new Map();
+    
+// for (let n of arr) {
+//     if (map.has(n))
+//         map.set(n, map.get(n) + 1);
+//     else
+//         map.set(n, 1);
+// }
+
+// const uniqueCounts = [...map.values()];
+// uniqueCounts.sort((a, b) => a - b);
+
+// let removedCount = 0;
+// let removedUniqueCount = 0;
+
+// for (let count of uniqueCounts) {
+//     removedCount += count;
+    
+//     if (removedCount <= k) {
+//         removedUniqueCount++;
+//     } else {
+//         break;
+//     }
+// }
+
+// return uniqueCounts.length - removedUniqueCount;
