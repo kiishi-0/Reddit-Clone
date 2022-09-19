@@ -56,6 +56,7 @@ export default function PostSection() {
     StorePost()  
   }, []);
   
+  
   return (
     <EntireSection>
       <PostSectionContainer>

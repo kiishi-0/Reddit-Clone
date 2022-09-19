@@ -157,6 +157,13 @@ const appendSelfText = (text) =>{
     el.appendChild(text)
   }
 }
+
+const scoreReturner = (score) =>{
+  let initScore = score.toString();
+
+  let finalScore = initScore.length > 3 && initScore.length < 5 ? initScore[0] + "k" : initScore.length >= 5 ? initScore[0] + initScore[1] + "k" : initScore;
+  return finalScore;
+} 
 const checkMedia = () =>{
   if(data.is_reddit_media_domain === true){
     return <img className='post_image' src={data.url} alt={data.title} />
@@ -170,7 +177,7 @@ const checkMedia = () =>{
           <Vote>
             <VoteImage src={arrow} className="up"/>
           </Vote>
-          <VoteNumber>{data.score}</VoteNumber>
+          <VoteNumber>{scoreReturner(data.score)}</VoteNumber>
           <Vote>
             <VoteImage src={arrow} />
           </Vote>
