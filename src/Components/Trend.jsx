@@ -74,11 +74,7 @@ export default function Trend(props) {
   console.log(data)
   const imgSrc = data.thumbnail ? data.thumbnail : data.url.includes('jpg') ? data.url : undefined;
   
-  const scoreReturner = (score) =>{
-    let initScore = score.toString();
-
-    let finalScore = initScore.length > 3 && initScore.length < 5 ? initScore[0] + "k" : initScore.length > 5 ? initScore[0] + initScore[1] + "k" : initScore;
-  } 
+  
  
   return (
     <TrendBox href={data.url} title={data.title} alt={data.title}>

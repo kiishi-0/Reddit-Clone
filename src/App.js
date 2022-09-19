@@ -6,7 +6,7 @@ import styled from 'styled-components';
  import React from 'react';
 
 const AppContainer = styled.div`
-  padding: 0 10%;
+  padding: 0 11%;
   section{
     margin: 0 0 20px;
   }

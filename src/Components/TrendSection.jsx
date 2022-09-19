@@ -57,7 +57,8 @@ export default function TrendSection() {
     <TrendSectionContainer>
       <Title>Trending Today</Title>
       <TrendsContainer>
-        {arrayTrends ? arrayTrends.map( (data, key) => <Trend data={data.data} key={key}/>) : <TrendLoaders />}
+        {/* <TrendLoaders></TrendLoaders> */}
+        {arrayTrends.length ? arrayTrends.map( (data, key) => <Trend data={data.data} key={key}/>) : <TrendLoaders></TrendLoaders>}
       </TrendsContainer>
     </TrendSectionContainer>
   )
