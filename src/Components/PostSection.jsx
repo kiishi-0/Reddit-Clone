@@ -24,6 +24,9 @@ const PostSectionContainer = styled.div`
   @media(max-width: 880px){
     width: 100%;
   }
+  @media(max-width: 446px){
+    margin-right: 0;
+  }
 `
 const Title = styled.h3`
   font-weight: 600;

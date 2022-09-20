@@ -65,6 +65,9 @@ const OtherLinks = styled(Buttons)`
     font-size: 16px;
     font-weight: 600;
   }
+  @media(max-width: 446px){
+    display: none;
+  }
   
 `
 const SelectOptionDiv = styled.div`

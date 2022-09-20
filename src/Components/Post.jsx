@@ -68,6 +68,7 @@ const PostHeader = styled.div`
     span{
       margin-left: 5px;
       color: #787C7E;
+      text-align: left;
       a{
         color: #787C7E;
         text-decoration: none;
@@ -83,6 +84,11 @@ const PostHeaderTextDiv = styled.div`
     align-items: center;
     flex-wrap: wrap;
     justify-content: flex-start;
+    @media(max-width: 400px){
+      .poster{
+        display: none;
+      }
+    }
 `
 const ProfilePicDiv = styled.div`
     width: 20px;
@@ -99,6 +105,9 @@ const CommunityName = styled.p`
     font-weight: 600;
     color: #000;
     margin-left: 5px;
+    @media(max-width: 400px){
+      display: none;
+    }
 `
 const JoinButton = styled.button`
     // width: 120px;

@@ -36,6 +36,9 @@ const LoginButton = styled.a`
     :hover{
         background: rgba(0,121,211,0.05);
     }
+    @media(max-width: 340px){
+        font-size: 12px;
+    }
 `
 const SignUpButton = styled(LoginButton)`
     background: #0487D9;

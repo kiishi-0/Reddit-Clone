@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import black from '../images/black.jpg'
 
 
 const TrendBox = styled.a`
@@ -72,7 +73,7 @@ const Author = styled.span`
 export default function Trend(props) {
   const data = props.data
   console.log(data)
-  const imgSrc = data.thumbnail ? data.thumbnail : data.url.includes('jpg') ? data.url : undefined;
+  const imgSrc = data.thumbnail && data.thumbnail !== 'default' && data.thumbnail.includes('jpg')? data.thumbnail : data.url.includes('jpg') ? data.url : black;
   
   
  
