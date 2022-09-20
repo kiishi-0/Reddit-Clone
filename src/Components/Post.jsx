@@ -84,7 +84,7 @@ const PostHeaderTextDiv = styled.div`
     align-items: center;
     flex-wrap: wrap;
     justify-content: flex-start;
-    @media(max-width: 400px){
+    @media(max-width: 420px){
       .poster{
         display: none;
       }
@@ -105,7 +105,7 @@ const CommunityName = styled.p`
     font-weight: 600;
     color: #000;
     margin-left: 5px;
-    @media(max-width: 400px){
+    @media(max-width: 420px){
       display: none;
     }
 `
